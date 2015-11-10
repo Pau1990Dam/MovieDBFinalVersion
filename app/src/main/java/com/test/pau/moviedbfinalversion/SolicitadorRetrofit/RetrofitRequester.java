@@ -39,14 +39,17 @@ public class RetrofitRequester {
         llamada.enqueue(new Callback<PelisPopulares>() {
             @Override
             public void onResponse(Response<PelisPopulares> response, Retrofit retrofit) {
+                Double d=-1.1;
                 if (response.isSuccess()) {
                     PelisPopulares resultado = response.body();
                     adaptador.clear();
                     for (Peli lista : resultado.getResults()) {
                         adaptador.add(lista);
+                        d =lista.getVoteAverage();
                     }
+                    Toast.makeText(adaptador.getContext(), String.valueOf(d), Toast.LENGTH_SHORT).show();
                 }else{
-
+                    Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
@@ -54,9 +57,8 @@ public class RetrofitRequester {
                 t.printStackTrace();
             }
         });
-
-
     }
+
     public void getPeliculesMillorValorades(final AdaptadorGraella adaptador, String llengua){
         servei=retrofit.create(MovieDB.class);
         Call<TopPelis> llamada = (Call<TopPelis>) servei.top_pelis(apikey,llengua);
@@ -71,7 +73,7 @@ public class RetrofitRequester {
                         adaptador.add(lista);
                     }
                 }else{
-
+                    Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

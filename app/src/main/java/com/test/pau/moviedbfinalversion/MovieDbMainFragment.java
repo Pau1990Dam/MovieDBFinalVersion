@@ -97,10 +97,11 @@ public class MovieDbMainFragment extends Fragment {
     }
 
     private void refresh() {
-        String llengua = "es";
+        String llengua = "en";
 
         RetrofitRequester apiSolicitadora = new RetrofitRequester();
-        apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
+        //apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
+        apiSolicitadora.getPeliculesPopulars(adptador,llengua);
     }
 }
 

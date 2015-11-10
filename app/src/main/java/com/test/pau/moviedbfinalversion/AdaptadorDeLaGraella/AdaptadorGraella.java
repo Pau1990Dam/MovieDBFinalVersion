@@ -38,7 +38,7 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> {
         poster.setImageResource(R.drawable.sample_6);//Provisional
         titol.setText(pelis.get(position).getTitle());
         popularitat.setText("Popularidad "+formato.format(pelis.get(position).getPopularity()));
-        valoracio.setText("Valoración " + pelis.get(position).getVoteAverage());
+        valoracio.setText("Valoración " + formato.format(pelis.get(position).getVoteAverage()));
         return (item);
     }
 }
