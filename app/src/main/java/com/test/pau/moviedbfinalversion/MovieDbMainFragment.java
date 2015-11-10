@@ -4,12 +4,16 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,9 +22,20 @@ import java.util.ArrayList;
  */
 public class MovieDbMainFragment extends Fragment {
 
+    //Objete adaptar, de caire temporal, creat per ajustar el GridView
     TestAdaptadorGraella testAdapter;
+    //ArrayList d'objectes fets amedida del GridView per enviar-los al Adapter y que aquest els fiqui
+    //dintre de les cel·les del GridView
     ArrayList<ItemGridTest> listaObjetes;
+
     public MovieDbMainFragment() {
+    }
+
+    //Indiquem que agregarem un nou  item (opció al menu)
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -38,8 +53,38 @@ public class MovieDbMainFragment extends Fragment {
         return rootView;
     }
 
+    //Indiquem quin es el xml corresponent al dibuix del menu
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_refresh, menu);
+    }
+
+    //Indiquem que executi el métode void refresh() si es clica l'item del menu refresh.
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_refresh) {
+            refresh();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void refresh() {
+        Toast t= Toast.makeText(getContext(),"Funciona!!!",Toast.LENGTH_LONG);
+        t.show();
+    }
+
 }
 
+//Objecte creat per omplir El ImageView i els TextViews del Grid
 class ItemGridTest{
     private Integer poster=R.drawable.sample_6;
     private String titol="Peli guay";
@@ -60,6 +105,8 @@ class ItemGridTest{
         return valoracio;
     }
 }
+
+//Dibuixa els objectes pasats creant línies d'xml. Es com una plantilla.
 class TestAdaptadorGraella extends ArrayAdapter<ItemGridTest>{
     ArrayList<ItemGridTest>dades;
 
