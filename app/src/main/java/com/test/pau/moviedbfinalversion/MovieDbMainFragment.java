@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -78,8 +81,14 @@ public class MovieDbMainFragment extends Fragment {
     }
 
     private void refresh() {
-        Toast t= Toast.makeText(getContext(),"Funciona!!!",Toast.LENGTH_LONG);
-        t.show();
+        final String BASE_URL ="https://api.themoviedb.org/3/movie/";
+        final String apikey="3abc6154c470ac598df9e7d97700f8cd";
+
+        //Motem la URL arrel base de les peticions 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
 }
