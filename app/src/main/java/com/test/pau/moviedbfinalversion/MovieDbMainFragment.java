@@ -105,10 +105,9 @@ public class MovieDbMainFragment extends Fragment {
             public void onResponse(Response<TopPelis> response, Retrofit retrofit) {
                 if (response.isSuccess()) {
                     TopPelis resultado = response.body();
-                    //items.clear();
                     testAdapter.clear();
                     for (Peli list : resultado.getResults()) {
-                        //items.add("Peli"+list.getTitle());
+
                         ItemGridTest peli = new ItemGridTest();
                         peli.setTitol("Título: " + list.getTitle());
                         peli.setValoracio("Valoracion: " + list.getVoteAverage());

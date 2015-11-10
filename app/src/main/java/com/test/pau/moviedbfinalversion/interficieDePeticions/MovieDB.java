@@ -15,13 +15,15 @@ public interface MovieDB {
     @GET("top_rated")
     Call<TopPelis> top_pelis(
             @Query("api_key")String api_key,
-            @Query("country") String pais);
+            @Query("language") String lengua);
 
     @GET("popular")
     Call<PelisPopulares> pelis_populares(
-            @Query("api_key")String api_key);
+            @Query("api_key")String api_key,
+            @Query("language") String lengua);
 
     @GET("images")
     Call<Posters> posters(
-            @Query("api_key")String api_key);
+            @Query("api_key")String api_key,
+            @Query("language") String lengua);
 }
