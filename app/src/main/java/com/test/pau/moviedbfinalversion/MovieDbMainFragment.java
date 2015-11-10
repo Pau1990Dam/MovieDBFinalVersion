@@ -15,9 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.test.pau.moviedbfinalversion.Json.Peli;
+import com.test.pau.moviedbfinalversion.Json.TopPelis;
+import com.test.pau.moviedbfinalversion.interficieDePeticions.MovieDB;
+
 import java.util.ArrayList;
 
+import retrofit.Call;
+import retrofit.Callback;
 import retrofit.GsonConverterFactory;
+import retrofit.Response;
 import retrofit.Retrofit;
 
 /**
@@ -81,15 +88,48 @@ public class MovieDbMainFragment extends Fragment {
     }
 
     private void refresh() {
+
+
         final String BASE_URL ="https://api.themoviedb.org/3/movie/";
         final String apikey="3abc6154c470ac598df9e7d97700f8cd";
 
-        //Motem la URL arrel base de les peticions 
+        //Motem la URL arrel base de les peticions
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        MovieDB service = retrofit.create(MovieDB.class);
+        Call<TopPelis> llamada = (Call<TopPelis>) service.top_pelis(apikey,"es");
+        llamada.enqueue(new Callback<TopPelis>() {
+            @Override
+            public void onResponse(Response<TopPelis> response, Retrofit retrofit) {
+                if (response.isSuccess()) {
+                    TopPelis resultado = response.body();
+                    //items.clear();
+                    testAdapter.clear();
+                    for (Peli list : resultado.getResults()) {
+                        //items.add("Peli"+list.getTitle());
+                        ItemGridTest peli = new ItemGridTest();
+                        peli.setTitol("Título: " + list.getTitle());
+                        peli.setValoracio("Valoracion: " + list.getVoteAverage());
+                        peli.setPopularitat("Popularidad: " + list.getPopularity());
+                        testAdapter.add(peli);
+                    }
+                }else{
+                    Toast mal=Toast.makeText(getContext(),"ERROR",Toast.LENGTH_LONG);
+                    mal.show();
+                }
+            }
+            @Override
+            public void onFailure(Throwable t) {
+                t.printStackTrace();
+                // Toast to = Toast.makeText(getContext(), "Peticion Fallida: ", Toast.LENGTH_LONG);
+                //to.show();
+
+            }
+        });
     }
+
 
 }
 
@@ -109,9 +149,21 @@ class ItemGridTest{
     public String getPopularitat(){
         return popularitat;
     }
-
     public String getValoracio(){
         return valoracio;
+    }
+
+    public void setPoster(){
+
+    }
+    public void setTitol(String titol){
+        this.titol=titol;
+    }
+    public void setPopularitat(String popularitat){
+        this.popularitat=popularitat;
+    }
+    public void setValoracio(String valoracio){
+        this.valoracio=valoracio;
     }
 }
 
