@@ -15,11 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.test.pau.moviedbfinalversion.AdaptadorDeLaGraella.AdaptadorGraella;
 import com.test.pau.moviedbfinalversion.Json.Peli;
 import com.test.pau.moviedbfinalversion.Json.TopPelis;
+import com.test.pau.moviedbfinalversion.SolicitadorRetrofit.RetrofitRequester;
 import com.test.pau.moviedbfinalversion.interficieDePeticions.MovieDB;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -31,12 +34,8 @@ import retrofit.Retrofit;
  * A placeholder fragment containing a simple view.
  */
 public class MovieDbMainFragment extends Fragment {
-
-    //Objete adaptar, de caire temporal, creat per ajustar el GridView
-    TestAdaptadorGraella testAdapter;
-    //ArrayList d'objectes fets amedida del GridView per enviar-los al Adapter y que aquest els fiqui
-    //dintre de les cel·les del GridView
-    ArrayList<ItemGridTest> listaObjetes;
+     AdaptadorGraella adptador;
+     ArrayList<Peli>inicialitzador;
 
     public MovieDbMainFragment() {
     }
@@ -48,17 +47,27 @@ public class MovieDbMainFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView =inflater.inflate(R.layout.fragment_movie_db_main, container, false);
 
+        inicialitzador=new ArrayList<>();
+        Peli p= new Peli();
+        p.setTitle("Sin datos");
+        p.setPopularity(0);
+        p.setVoteAverage(0);
+        for(int i=0;i<=10;i++)inicialitzador.add(p);
         GridView graellaPelis= (GridView)rootView.findViewById(R.id.graellaPelis);
-        listaObjetes=new ArrayList<>();
-        for(int i=0;i<10;i++)listaObjetes.add(new ItemGridTest());
-
-        testAdapter= new TestAdaptadorGraella(getContext(),listaObjetes);
-        graellaPelis.setAdapter(testAdapter);
+        adptador=new AdaptadorGraella(getContext(),R.layout.fila_graella,inicialitzador);
+        graellaPelis.setAdapter(adptador);
 
         return rootView;
     }
@@ -88,104 +97,13 @@ public class MovieDbMainFragment extends Fragment {
     }
 
     private void refresh() {
+        String llengua = "es";
 
-
-        final String BASE_URL ="https://api.themoviedb.org/3/movie/";
-        final String apikey="3abc6154c470ac598df9e7d97700f8cd";
-
-        //Motem la URL arrel base de les peticions
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        MovieDB service = retrofit.create(MovieDB.class);
-        Call<TopPelis> llamada = (Call<TopPelis>) service.top_pelis(apikey,"es");
-        llamada.enqueue(new Callback<TopPelis>() {
-            @Override
-            public void onResponse(Response<TopPelis> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    TopPelis resultado = response.body();
-                    testAdapter.clear();
-                    for (Peli list : resultado.getResults()) {
-
-                        ItemGridTest peli = new ItemGridTest();
-                        peli.setTitol("Título: " + list.getTitle());
-                        peli.setValoracio("Valoracion: " + list.getVoteAverage());
-                        peli.setPopularitat("Popularidad: " + list.getPopularity());
-                        testAdapter.add(peli);
-                    }
-                }else{
-                    Toast mal=Toast.makeText(getContext(),"ERROR",Toast.LENGTH_LONG);
-                    mal.show();
-                }
-            }
-            @Override
-            public void onFailure(Throwable t) {
-                t.printStackTrace();
-                // Toast to = Toast.makeText(getContext(), "Peticion Fallida: ", Toast.LENGTH_LONG);
-                //to.show();
-
-            }
-        });
-    }
-
-
-}
-
-//Objecte creat per omplir El ImageView i els TextViews del Grid
-class ItemGridTest{
-    private Integer poster=R.drawable.sample_6;
-    private String titol="Peli guay";
-    private String popularitat="Molta";
-    private String valoracio="Bona";
-
-    public Integer getPoster(){
-        return poster;
-    }
-    public String getTitol(){
-        return titol;
-    }
-    public String getPopularitat(){
-        return popularitat;
-    }
-    public String getValoracio(){
-        return valoracio;
-    }
-
-    public void setPoster(){
-
-    }
-    public void setTitol(String titol){
-        this.titol=titol;
-    }
-    public void setPopularitat(String popularitat){
-        this.popularitat=popularitat;
-    }
-    public void setValoracio(String valoracio){
-        this.valoracio=valoracio;
+        RetrofitRequester apiSolicitadora = new RetrofitRequester();
+        apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
     }
 }
 
-//Dibuixa els objectes pasats creant línies d'xml. Es com una plantilla.
-class TestAdaptadorGraella extends ArrayAdapter<ItemGridTest>{
-    ArrayList<ItemGridTest>dades;
 
-    public TestAdaptadorGraella(Context context, ArrayList<ItemGridTest> dades) {
-        super(context, R.layout.fila_graella, dades);
-        this.dades=dades;
-    }
-    public View getView(int position, View convertView, ViewGroup parent){
-        LayoutInflater inflater=LayoutInflater.from(getContext());
-        View item =inflater.inflate(R.layout.fila_graella, null);
-        ImageView poster=(ImageView)item.findViewById(R.id.poster);
-        TextView titol=(TextView)item.findViewById(R.id.Titol);
-        TextView popularitat=(TextView)item.findViewById(R.id.Popularitat);
-        TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);
-        poster.setImageResource(dades.get(position).getPoster());
-        titol.setText(dades.get(position).getTitol());
-        popularitat.setText(dades.get(position).getPopularitat());
-        valoracio.setText(dades.get(position).getValoracio());
-        return(item);
-    }
-}
+
 
