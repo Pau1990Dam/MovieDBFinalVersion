@@ -113,9 +113,9 @@ public class MovieDbMainFragment extends Fragment {
             llengua="en";
 
         if(preferencias.getString("lista_peliculas","populars").equals("populars")){
-            apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
-        }if(preferencias.getString("lista_peliculas","top_rated").equals("top_rated")) {
             apiSolicitadora.getPeliculesPopulars(adptador,llengua);
+        }if(preferencias.getString("lista_peliculas","top_rated").equals("top_rated")) {
+            apiSolicitadora.getPeliculesMillorValorades(adptador, llengua);
         }
 
     }

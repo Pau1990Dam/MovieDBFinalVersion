@@ -39,15 +39,15 @@ public class RetrofitRequester {
         llamada.enqueue(new Callback<PelisPopulares>() {
             @Override
             public void onResponse(Response<PelisPopulares> response, Retrofit retrofit) {
-                Double d=-1.1;
+                String posterPath="Sin inicializar";
                 if (response.isSuccess()) {
                     PelisPopulares resultado = response.body();
                     adaptador.clear();
                     for (Peli lista : resultado.getResults()) {
                         adaptador.add(lista);
-                        d =lista.getVoteAverage();
+                        posterPath=lista.getPosterPath();
                     }
-                    Toast.makeText(adaptador.getContext(), String.valueOf(d), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(adaptador.getContext(), "Peliculas Mas Populares "+posterPath, Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
@@ -72,8 +72,9 @@ public class RetrofitRequester {
                     for (Peli lista : resultado.getResults()) {
                         adaptador.add(lista);
                     }
+                    Toast.makeText(adaptador.getContext(), "Peliculas Mejor valoradas", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }
             }
             @Override

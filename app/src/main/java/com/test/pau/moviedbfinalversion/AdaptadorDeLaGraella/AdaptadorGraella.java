@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.test.pau.moviedbfinalversion.Json.Peli;
 import com.test.pau.moviedbfinalversion.R;
 
@@ -19,6 +20,9 @@ import java.util.List;
  * Created by pau on 10/11/15.
  */
 public class AdaptadorGraella extends ArrayAdapter<Peli> {
+
+    final private String posterUrl = "http://image.tmdb.org/t/p/";
+    //final private String posterSize = "w185";
     List<Peli>pelis;
     DecimalFormat formato=new DecimalFormat("#0.00");
     public AdaptadorGraella(Context context, int resource, List<Peli> pelis) {
@@ -36,6 +40,7 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> {
         TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);
 
         poster.setImageResource(R.drawable.sample_6);//Provisional
+        Picasso.with(getContext()).load(posterUrl+pelis.get(position).getPosterPath()).fit().into(poster);
         titol.setText(pelis.get(position).getTitle());
         popularitat.setText("Popularidad "+formato.format(pelis.get(position).getPopularity()));
         valoracio.setText("Valoración " + formato.format(pelis.get(position).getVoteAverage()));
