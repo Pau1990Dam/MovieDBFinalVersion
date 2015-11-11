@@ -28,6 +28,26 @@
         <item>-1</item>
     </string-array>
 
+    <string-array name="lista_peliculas_titulos">
+        <item>Popularidad</item>
+        <item>Valoración</item>
+    </string-array>
+
+    <string-array name="lista_peliculas_valores">
+        <item>populars</item>
+        <item>top_rated</item>
+    </string-array>
+
+    <string-array name="idioma_peliculas_titulos">
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="idioma_peliculas_valores">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
+
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
@@ -49,27 +69,6 @@
         <item>-1</item>
     </string-array>
 
-    <string-array name="lista_peliculas">
-        <item>Populares</item>
-        <item>Top Rated</item>
-    </string-array>
-
-    <string-array name="tipos_listados">
-        <item>populars</item>
-        <item>top_rated</item>
-    </string-array>
-
-
-    <string-array name="lengua">
-        <item>Español</item>
-        <item>Ingles</item>
-    </string-array>
-
-    <string-array name="ISO_code">
-        <item>es</item>
-        <item>en</item>
-    </string-array>
-
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
@@ -85,3 +84,15 @@
 
     <string name="hello_world">Hello world!</string>
 </resources>
+
+<!--
+    <string-array name="lengua">
+        <item>Español</item>
+        <item>Ingles</item>
+    </string-array>
+
+    <string-array name="ISO_code">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
+-->

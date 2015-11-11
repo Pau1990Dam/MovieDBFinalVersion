@@ -189,8 +189,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("lengua"));
+            //bindPreferenceSummaryToValue(findPreference("lengua"));
+            //bindPreferenceSummaryToValue(findPreference("lista_peliculas"));
             bindPreferenceSummaryToValue(findPreference("lista_peliculas"));
+            bindPreferenceSummaryToValue(findPreference("idioma_peliculas"));
         }
 
         @Override

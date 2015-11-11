@@ -101,16 +101,23 @@ public class MovieDbMainFragment extends Fragment {
     }
 
     private void refresh() {
-        String llengua = "en";
+        String llengua="es";
 
         RetrofitRequester apiSolicitadora = new RetrofitRequester();
-        //apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
-        //apiSolicitadora.getPeliculesPopulars(adptador,llengua);
+
+
         SharedPreferences preferencias= PreferenceManager.getDefaultSharedPreferences(getContext());
-        if(preferencias.getString("lista_peliculas","top_rated").equals("top_rated")){
+        if(preferencias.getString("idioma_peliculas","es").equals("es")){
+            llengua="es";
+        }else
+            llengua="en";
+
+        if(preferencias.getString("lista_peliculas","populars").equals("populars")){
             apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
+        }if(preferencias.getString("lista_peliculas","top_rated").equals("top_rated")) {
+            apiSolicitadora.getPeliculesPopulars(adptador,llengua);
         }
-        String consulta= preferencias.getString("lista_peliculas","");
+
     }
 }
 
