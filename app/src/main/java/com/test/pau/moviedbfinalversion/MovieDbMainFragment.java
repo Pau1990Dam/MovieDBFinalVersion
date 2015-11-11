@@ -1,6 +1,9 @@
 package com.test.pau.moviedbfinalversion;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +26,7 @@ import com.test.pau.moviedbfinalversion.interficieDePeticions.MovieDB;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.prefs.Preferences;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -101,7 +105,12 @@ public class MovieDbMainFragment extends Fragment {
 
         RetrofitRequester apiSolicitadora = new RetrofitRequester();
         //apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
-        apiSolicitadora.getPeliculesPopulars(adptador,llengua);
+        //apiSolicitadora.getPeliculesPopulars(adptador,llengua);
+        SharedPreferences preferencias= PreferenceManager.getDefaultSharedPreferences(getContext());
+        if(preferencias.getString("lista_peliculas","top_rated").equals("top_rated")){
+            apiSolicitadora.getPeliculesMillorValorades(adptador,llengua);
+        }
+        String consulta= preferencias.getString("lista_peliculas","");
     }
 }
 
