@@ -1,30 +1,56 @@
 package com.test.pau.moviedbfinalversion.Json;
 
-/**
- * Created by pau on 3/11/15.
- */
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 
 public class Peli {
 
+    @SerializedName("adult")
+    @Expose
     private boolean adult;
+    @SerializedName("backdrop_path")
+    @Expose
     private String backdropPath;
+    @SerializedName("genre_ids")
+    @Expose
     private List<Integer> genreIds = new ArrayList<Integer>();
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("original_language")
+    @Expose
     private String originalLanguage;
+    @SerializedName("original_title")
+    @Expose
     private String originalTitle;
+    @SerializedName("overview")
+    @Expose
     private String overview;
+    @SerializedName("release_date")
+    @Expose
     private String releaseDate;
+    @SerializedName("poster_path")
+    @Expose
     private String posterPath;
-    private double popularity;
+    @SerializedName("popularity")
+    @Expose
+    private float popularity;
+    @SerializedName("title")
+    @Expose
     private String title;
+    @SerializedName("video")
+    @Expose
     private boolean video;
-    private double voteAverage;
+    @SerializedName("vote_average")
+    @Expose
+    private float voteAverage;
+    @SerializedName("vote_count")
+    @Expose
     private int voteCount;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
@@ -193,7 +219,7 @@ public class Peli {
      * @return
      * The popularity
      */
-    public double getPopularity() {
+    public float getPopularity() {
         return popularity;
     }
 
@@ -202,7 +228,7 @@ public class Peli {
      * @param popularity
      * The popularity
      */
-    public void setPopularity(double popularity) {
+    public void setPopularity(float popularity) {
         this.popularity = popularity;
     }
 
@@ -247,7 +273,7 @@ public class Peli {
      * @return
      * The voteAverage
      */
-    public double getVoteAverage() {
+    public float getVoteAverage() {
         return voteAverage;
     }
 
@@ -256,7 +282,7 @@ public class Peli {
      * @param voteAverage
      * The vote_average
      */
-    public void setVoteAverage(double voteAverage) {
+    public void setVoteAverage(float voteAverage) {
         this.voteAverage = voteAverage;
     }
 
@@ -276,14 +302,6 @@ public class Peli {
      */
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

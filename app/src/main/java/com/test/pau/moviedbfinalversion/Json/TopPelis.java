@@ -1,20 +1,25 @@
 package com.test.pau.moviedbfinalversion.Json;
 
-/**
- * Created by pau on 3/11/15.
- */
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class TopPelis {
 
+    @SerializedName("page")
+    @Expose
     private int page;
+    @SerializedName("results")
+    @Expose
     private List<Peli> results = new ArrayList<Peli>();
+    @SerializedName("total_pages")
+    @Expose
     private int totalPages;
+    @SerializedName("total_results")
+    @Expose
     private int totalResults;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
@@ -86,14 +91,6 @@ public class TopPelis {
      */
     public void setTotalResults(int totalResults) {
         this.totalResults = totalResults;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

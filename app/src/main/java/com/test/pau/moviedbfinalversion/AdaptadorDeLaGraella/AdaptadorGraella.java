@@ -22,7 +22,7 @@ import java.util.List;
 public class AdaptadorGraella extends ArrayAdapter<Peli> {
 
     final private String posterUrl = "http://image.tmdb.org/t/p/";
-    //final private String posterSize = "w185";
+    final private String posterSize = "w185";
     List<Peli>pelis;
     DecimalFormat formato=new DecimalFormat("#0.00");
     public AdaptadorGraella(Context context, int resource, List<Peli> pelis) {
@@ -40,7 +40,7 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> {
         TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);
 
         poster.setImageResource(R.drawable.sample_6);//Provisional
-        Picasso.with(getContext()).load(posterUrl+pelis.get(position).getPosterPath()).fit().into(poster);
+        Picasso.with(getContext()).load(posterUrl + posterSize + pelis.get(position).getPosterPath()).into(poster);//fit().
         titol.setText(pelis.get(position).getTitle());
         popularitat.setText("Popularidad "+formato.format(pelis.get(position).getPopularity()));
         valoracio.setText("Valoración " + formato.format(pelis.get(position).getVoteAverage()));
