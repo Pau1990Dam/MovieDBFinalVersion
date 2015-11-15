@@ -25,6 +25,7 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> {
     final private String posterSize = "w185";
     List<Peli>pelis;
     DecimalFormat formato=new DecimalFormat("#0.00");
+    DecimalFormat formato2=new DecimalFormat("#00");
     public AdaptadorGraella(Context context, int resource, List<Peli> pelis) {
         super(context, resource, pelis);
         this.pelis=pelis;
@@ -40,9 +41,10 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> {
         TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);
 
         poster.setImageResource(R.drawable.sample_6);//Provisional
-        Picasso.with(getContext()).load(posterUrl + posterSize + pelis.get(position).getPosterPath()).into(poster);//fit().
+        Picasso.with(getContext()).load(posterUrl + posterSize + pelis.get(position).
+                getPosterPath()).into(poster);//
         titol.setText(pelis.get(position).getTitle());
-        popularitat.setText("Popularidad "+formato.format(pelis.get(position).getPopularity()));
+        popularitat.setText("Popularidad "+formato2.format(pelis.get(position).getPopularity())+"%");
         valoracio.setText("Valoración " + formato.format(pelis.get(position).getVoteAverage()));
         return (item);
     }

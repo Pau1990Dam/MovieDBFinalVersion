@@ -47,7 +47,7 @@ public class RetrofitRequester {
                         adaptador.add(lista);
                         posterPath=lista.getPosterPath();
                     }
-                    Toast.makeText(adaptador.getContext(), "Peliculas Mas Populares "+posterPath, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(adaptador.getContext(), "Peliculas Mas Populares "+posterPath, Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
@@ -72,7 +72,7 @@ public class RetrofitRequester {
                     for (Peli lista : resultado.getResults()) {
                         adaptador.add(lista);
                     }
-                    Toast.makeText(adaptador.getContext(), "Peliculas Mejor valoradas", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(adaptador.getContext(), "Peliculas Mejor valoradas", Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }

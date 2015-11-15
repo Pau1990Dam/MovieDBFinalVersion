@@ -1,5 +1,6 @@
 package com.test.pau.moviedbfinalversion.Json;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class PelisPopulares {
+public class PelisPopulares implements Serializable{
 
     @SerializedName("page")
     @Expose

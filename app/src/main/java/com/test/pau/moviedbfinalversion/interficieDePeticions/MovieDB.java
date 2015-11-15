@@ -1,7 +1,6 @@
 package com.test.pau.moviedbfinalversion.interficieDePeticions;
 
 import com.test.pau.moviedbfinalversion.Json.PelisPopulares;
-import com.test.pau.moviedbfinalversion.Json.Posters;
 import com.test.pau.moviedbfinalversion.Json.TopPelis;
 
 import retrofit.Call;
@@ -21,9 +20,9 @@ public interface MovieDB {
     Call<PelisPopulares> pelis_populares(
             @Query("api_key")String api_key,
             @Query("language") String lengua);
-
+/*
     @GET("images")
     Call<Posters> posters(
             @Query("api_key")String api_key,
-            @Query("language") String lengua);
+            @Query("language") String lengua);*/
 }
