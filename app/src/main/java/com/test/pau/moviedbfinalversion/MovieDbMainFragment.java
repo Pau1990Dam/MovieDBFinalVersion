@@ -1,6 +1,7 @@
 package com.test.pau.moviedbfinalversion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -64,7 +66,7 @@ public class MovieDbMainFragment extends Fragment {
         View rootView =inflater.inflate(R.layout.fragment_movie_db_main, container, false);
 
         inicialitzador=new ArrayList<>();
-        Peli p= new Peli();
+        final Peli p= new Peli();
         p.setTitle("Sin datos");
         p.setPopularity(0);
         p.setVoteAverage(0);
@@ -72,6 +74,27 @@ public class MovieDbMainFragment extends Fragment {
         GridView graellaPelis= (GridView)rootView.findViewById(R.id.graellaPelis);
         adptador=new AdaptadorGraella(getContext(),R.layout.fila_graella,inicialitzador);
         graellaPelis.setAdapter(adptador);
+
+        graellaPelis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Peli peliSeleccionada = (Peli)parent.getItemAtPosition(position);
+                Intent invocaPeliActivity = new Intent(getContext(), PeliculaActivity.class);
+                invocaPeliActivity.putExtra("pelicula", peliSeleccionada);
+                startActivity(invocaPeliActivity);
+            }
+
+        });
+        /*
+                listaPeliculas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Result selectedFilm = (Result) parent.getItemAtPosition(position);
+                Intent detallesPeliculas = new Intent(getContext(), MovieDetailsActivity.class);
+                detallesPeliculas.putExtra("pelicula", selectedFilm);
+                startActivity(detallesPeliculas);
+            }
+        });
+         */
 
         return rootView;
     }

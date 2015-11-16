@@ -26,6 +26,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.test.pau.moviedbfinalversion.MovieDbMain" />
         </activity>
+        <activity
+            android:name=".PeliculaActivity"
+            android:label="@string/title_activity_pelicula_detalls" >
+        </activity>
     </application>
 
 </manifest>

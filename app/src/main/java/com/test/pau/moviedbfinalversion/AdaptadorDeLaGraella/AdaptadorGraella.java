@@ -12,14 +12,14 @@ import com.squareup.picasso.Picasso;
 import com.test.pau.moviedbfinalversion.Json.Peli;
 import com.test.pau.moviedbfinalversion.R;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by pau on 10/11/15.
  */
-public class AdaptadorGraella extends ArrayAdapter<Peli> {
+public class AdaptadorGraella extends ArrayAdapter<Peli> implements Serializable {
 
     final private String posterUrl = "http://image.tmdb.org/t/p/";
     final private String posterSize = "w185";
@@ -35,7 +35,7 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> {
         LayoutInflater inflater=LayoutInflater.from(getContext());
         View item =inflater.inflate(R.layout.fila_graella, null);
 
-        ImageView poster=(ImageView)item.findViewById(R.id.poster);
+        ImageView poster=(ImageView)item.findViewById(R.id.peliPoster);
         TextView titol=(TextView)item.findViewById(R.id.Titol);
         TextView popularitat=(TextView)item.findViewById(R.id.Popularitat);
         TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);

@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.test.pau.moviedbfinalversion.PeliculaActivity">
+
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:id="@+id/peliPoster" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Título"
+        android:id="@+id/titulo"
+        android:layout_alignTop="@+id/peliPoster"
+        android:layout_toRightOf="@+id/peliPoster"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:text="Fecha"
+        android:gravity="center"
+        android:id="@+id/fecha"
+        android:layout_alignRight="@+id/titulo"
+        android:layout_alignEnd="@+id/titulo"
+        android:layout_below="@+id/titulo"
+        android:layout_toRightOf="@+id/peliPoster"
+        android:layout_toEndOf="@+id/peliPoster" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:gravity="center"
+        android:text="Valoración"
+        android:id="@+id/valoracion"
+        android:layout_alignLeft="@+id/fecha"
+        android:layout_alignStart="@+id/fecha"
+        android:layout_below="@+id/fecha"
+        android:layout_alignRight="@+id/fecha"
+        android:layout_alignEnd="@+id/fecha" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popularidad"
+        android:gravity="center"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/popularidad"
+        android:layout_alignLeft="@+id/valoracion"
+        android:layout_alignStart="@+id/valoracion"
+        android:layout_below="@+id/valoracion"
+        android:layout_alignRight="@+id/valoracion"
+        android:layout_alignEnd="@+id/valoracion" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Catalogación"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/catalogacion"
+        android:layout_alignLeft="@+id/popularidad"
+        android:layout_alignStart="@+id/popularidad"
+        android:layout_below="@+id/popularidad"
+        android:layout_alignRight="@+id/popularidad"
+        android:layout_alignEnd="@+id/popularidad" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Descripción"
+        android:id="@+id/descripcion"
+        android:layout_below="@+id/peliPoster"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Idioma"
+        android:id="@+id/idioma"
+        android:layout_alignLeft="@+id/catalogacion"
+        android:layout_alignStart="@+id/catalogacion"
+        android:layout_below="@+id/catalogacion"
+        android:layout_alignRight="@+id/catalogacion"
+        android:layout_alignEnd="@+id/catalogacion" />
+
+</RelativeLayout>

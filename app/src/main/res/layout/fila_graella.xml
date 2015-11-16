@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:maxWidth="80dp"
         android:maxHeight="100dp"
-        android:id="@+id/poster"
+        android:id="@+id/peliPoster"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"/>
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="New Text"
             android:id="@+id/Titol"
-            android:layout_below="@+id/poster"
+            android:layout_below="@+id/peliPoster"
             android:layout_marginTop="2dp"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
