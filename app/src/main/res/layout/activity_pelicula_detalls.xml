@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+
         android:layout_marginBottom="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Título"
@@ -85,6 +85,7 @@
         android:layout_marginBottom="15dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Descripción"
+        android:gravity="center"
         android:id="@+id/descripcion"
         android:layout_below="@+id/peliPoster"
         android:layout_alignParentLeft="true"
@@ -103,3 +104,5 @@
         android:layout_alignEnd="@+id/catalogacion" />
 
 </RelativeLayout>
+
+<!--android:gravity="center"-->

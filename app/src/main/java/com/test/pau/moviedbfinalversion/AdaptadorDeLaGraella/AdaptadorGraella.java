@@ -40,7 +40,7 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> implements Serializable
         TextView popularitat=(TextView)item.findViewById(R.id.Popularitat);
         TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);
 
-        poster.setImageResource(R.drawable.sample_6);//Provisional
+       // poster.setImageResource(R.drawable.sample_6);//Provisional
         Picasso.with(getContext()).load(posterUrl + posterSize + pelis.get(position).
                 getPosterPath()).into(poster);//
         titol.setText(pelis.get(position).getTitle());

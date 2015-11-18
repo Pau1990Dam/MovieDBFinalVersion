@@ -52,8 +52,8 @@ public class PeliculaActivity extends AppCompatActivity {
 
         titulo.setText(pelicula.getTitle());
         fecha.setText("Estreno: "+pelicula.getReleaseDate());
-        popularidad.setText("Popularidad"+formato.format(pelicula.getPopularity())+"%");
-        valoracion.setText("Valoración"+formato2.format(pelicula.getVoteAverage()));
+        popularidad.setText("Popularidad "+formato.format(pelicula.getPopularity())+"%");
+        valoracion.setText("Valoración "+formato2.format(pelicula.getVoteAverage()));
         idioma.setText("Lengua original: "+pelicula.getOriginalLanguage());
         catalogacion.setText(getCatalogacion());
         descripcion.setText(pelicula.getOverview());
