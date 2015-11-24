@@ -79,7 +79,7 @@ public class MovieDbMainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Peli peliSeleccionada = (Peli)parent.getItemAtPosition(position);
-                Intent invocaPeliActivity = new Intent(getContext(), PeliculaActivity.class);
+                Intent invocaPeliActivity = new Intent(getContext(), PeliculaActivityFragment.class);
                 invocaPeliActivity.putExtra("pelicula", peliSeleccionada);
                 startActivity(invocaPeliActivity);
             }
