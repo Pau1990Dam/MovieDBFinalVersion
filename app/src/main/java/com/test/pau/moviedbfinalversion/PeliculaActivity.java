@@ -3,6 +3,7 @@ package com.test.pau.moviedbfinalversion;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -32,14 +33,17 @@ public class PeliculaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelicula_detalls);
 
-
         // Creamos nuestro intent y recogemos los datos que enviamos desde fragment
         Intent intent = getIntent();
         Bundle bd = intent.getExtras();
 
+
+
+
         if (bd != null) {   // Su hemos recibido algo lo asigna a pelocula
             pelicula = (Peli) intent.getSerializableExtra("pelicula");
         }
+
 
         TextView titulo=(TextView) findViewById(R.id.titulo);
         TextView fecha=(TextView) findViewById(R.id.fecha);
@@ -90,3 +94,10 @@ public class PeliculaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+/*
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        myToolbar.setTitle("Peli");
+ */
