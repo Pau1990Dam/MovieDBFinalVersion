@@ -22,6 +22,7 @@ import retrofit.Retrofit;
 public class RetrofitRequester {
     private final String BASE_URL ="https://api.themoviedb.org/3/movie/";
     private final String apikey="3abc6154c470ac598df9e7d97700f8cd";
+    private String pag="1";
     private MovieDB servei;
 
     Retrofit retrofit = new Retrofit.Builder()
@@ -34,29 +35,31 @@ public class RetrofitRequester {
 
     public void getPeliculesPopulars(final AdaptadorGraella adaptador, String llengua){
         servei=retrofit.create(MovieDB.class);
-        Call<PelisPopulares> llamada = (Call<PelisPopulares>) servei.pelis_populares(apikey,llengua);
 
-        llamada.enqueue(new Callback<PelisPopulares>() {
-            @Override
-            public void onResponse(Response<PelisPopulares> response, Retrofit retrofit) {
-                int i;
-                if (response.isSuccess()) {
-                    PelisPopulares resultado = response.body();
-                    i=resultado.getTotalPages();
-                    adaptador.clear();
-                    for (Peli lista : resultado.getResults()) {
-                        adaptador.add(lista);
+            Call<PelisPopulares> llamada = (Call<PelisPopulares>) servei.pelis_populares(apikey, llengua);
+            llamada.enqueue(new Callback<PelisPopulares>() {
+                @Override
+                public void onResponse(Response<PelisPopulares> response, Retrofit retrofit) {
+                    int i=1;
+                    if (response.isSuccess()) {
+                        PelisPopulares resultado = response.body();
+                        i = resultado.getTotalPages();
+                        adaptador.clear();
+                        for (Peli lista : resultado.getResults()) {
+                            adaptador.add(lista);
+                        }
+                        Toast.makeText(adaptador.getContext(), "Páginas Totales= " + i, Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(adaptador.getContext(), "Páginas Totales= "+i, Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
-            }
-            @Override
-            public void onFailure(Throwable t) {
-                t.printStackTrace();
-            }
-        });
+
+                @Override
+                public void onFailure(Throwable t) {
+                    t.printStackTrace();
+                }
+
+            });
     }
 
     public void getPeliculesMillorValorades(final AdaptadorGraella adaptador, String llengua){

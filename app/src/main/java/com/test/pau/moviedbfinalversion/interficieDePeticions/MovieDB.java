@@ -20,6 +20,7 @@ public interface MovieDB {
     Call<PelisPopulares> pelis_populares(
             @Query("api_key")String api_key,
             @Query("language") String lengua);
+    // @Query("page") String pag
 /*
     @GET("images")
     Call<Posters> posters(
