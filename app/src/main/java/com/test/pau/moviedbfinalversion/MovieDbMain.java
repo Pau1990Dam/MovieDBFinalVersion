@@ -2,6 +2,8 @@ package com.test.pau.moviedbfinalversion;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +19,21 @@ public class MovieDbMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        SharedPreferences preferencias = PreferenceManager.getDefaultSharedPreferences(this);   // necesario para referenciar y leer la configuración del programa
+
+        // Según como esté configurado el programa lee de las preferncias y muestra un titulo en el Toolbar u otro
+        /* IMPORTANTE: SOLO funcionará mientras la gestión de categorías pase por las preferencias.*/
+
+        if(preferencias.getString("lista_peliculas","populars").equals("populars")){
+            toolbar.setTitle("MovieDB - Populares");
+        }
+        else if (preferencias.getString("lista_peliculas","top_rated").equals("top_rated")){
+            toolbar.setTitle("MovieDB - Top Rated");
+        }
+        else{
+            toolbar.setTitle("MovieDB");
+        }
         setSupportActionBar(toolbar);
     }
 

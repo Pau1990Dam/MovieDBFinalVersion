@@ -39,15 +39,15 @@ public class RetrofitRequester {
         llamada.enqueue(new Callback<PelisPopulares>() {
             @Override
             public void onResponse(Response<PelisPopulares> response, Retrofit retrofit) {
-                String posterPath="Sin inicializar";
+                int i;
                 if (response.isSuccess()) {
                     PelisPopulares resultado = response.body();
+                    i=resultado.getTotalPages();
                     adaptador.clear();
                     for (Peli lista : resultado.getResults()) {
                         adaptador.add(lista);
-                        posterPath=lista.getPosterPath();
                     }
-                    //Toast.makeText(adaptador.getContext(), "Peliculas Mas Populares "+posterPath, Toast.LENGTH_LONG).show();
+                    Toast.makeText(adaptador.getContext(), "Páginas Totales= "+i, Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
@@ -66,13 +66,15 @@ public class RetrofitRequester {
         llamada.enqueue(new Callback<TopPelis>() {
             @Override
             public void onResponse(Response<TopPelis> response, Retrofit retrofit) {
+                int i;
                 if (response.isSuccess()) {
                     TopPelis resultado = response.body();
+                    i=resultado.getTotalPages();
                     adaptador.clear();
                     for (Peli lista : resultado.getResults()) {
                         adaptador.add(lista);
                     }
-                   // Toast.makeText(adaptador.getContext(), "Peliculas Mejor valoradas", Toast.LENGTH_LONG).show();
+                    Toast.makeText(adaptador.getContext(), "Páginas Totales="+i, Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }

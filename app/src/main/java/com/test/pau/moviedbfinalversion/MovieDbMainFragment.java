@@ -1,9 +1,7 @@
 package com.test.pau.moviedbfinalversion;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,27 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.test.pau.moviedbfinalversion.AdaptadorDeLaGraella.AdaptadorGraella;
 import com.test.pau.moviedbfinalversion.Json.Peli;
-import com.test.pau.moviedbfinalversion.Json.TopPelis;
 import com.test.pau.moviedbfinalversion.SolicitadorRetrofit.RetrofitRequester;
-import com.test.pau.moviedbfinalversion.interficieDePeticions.MovieDB;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.prefs.Preferences;
-
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -79,7 +63,7 @@ public class MovieDbMainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Peli peliSeleccionada = (Peli)parent.getItemAtPosition(position);
-                Intent invocaPeliActivity = new Intent(getContext(), PeliculaActivityFragment.class);
+                Intent invocaPeliActivity = new Intent(getContext(), PeliculaActivity.class);
                 invocaPeliActivity.putExtra("pelicula", peliSeleccionada);
                 startActivity(invocaPeliActivity);
             }

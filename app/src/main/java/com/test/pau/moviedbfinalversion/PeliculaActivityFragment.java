@@ -41,7 +41,7 @@ public class PeliculaActivityFragment extends Fragment {
             pelicula = (Peli) intent.getSerializableExtra("pelicula");
         }
 
-
+        getActivity().setTitle(pelicula.getTitle());
         TextView titulo=(TextView) view.findViewById(R.id.titulo);
         TextView fecha=(TextView) view.findViewById(R.id.fecha);
         TextView popularidad=(TextView) view.findViewById(R.id.popularidad);
