@@ -43,12 +43,12 @@ public class RetrofitRequester {
                     int i=1;
                     if (response.isSuccess()) {
                         PelisPopulares resultado = response.body();
-                        i = resultado.getTotalPages();
+                   //     i = resultado.getTotalPages();
                         adaptador.clear();
                         for (Peli lista : resultado.getResults()) {
                             adaptador.add(lista);
                         }
-                        Toast.makeText(adaptador.getContext(), "Páginas Totales= " + i, Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(adaptador.getContext(), "Páginas Totales= " + i, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                     }
@@ -72,12 +72,12 @@ public class RetrofitRequester {
                 int i;
                 if (response.isSuccess()) {
                     TopPelis resultado = response.body();
-                    i=resultado.getTotalPages();
+              //      i=resultado.getTotalPages();
                     adaptador.clear();
                     for (Peli lista : resultado.getResults()) {
                         adaptador.add(lista);
                     }
-                    Toast.makeText(adaptador.getContext(), "Páginas Totales="+i, Toast.LENGTH_LONG).show();
+                //    Toast.makeText(adaptador.getContext(), "Páginas Totales="+i, Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(adaptador.getContext(), "ERROR", Toast.LENGTH_LONG).show();
                 }
