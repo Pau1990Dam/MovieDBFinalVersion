@@ -57,7 +57,7 @@ public class PeliculaActivityFragment extends Fragment {
         valoracion.setText("Valoración "+formato2.format(pelicula.getVoteAverage()));
         idioma.setText("Lengua original: "+pelicula.getOriginalLanguage());
         catalogacion.setText(getCatalogacion());
-        descripcion.setText(pelicula.getOverview());
+        descripcion.setText("Sinopsis\n\n"+pelicula.getOverview());
         Picasso.with(getContext()).load(posterUrl + posterSize + pelicula.getPosterPath()).into(poster);//
         return view;
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MovieDbMain extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class MovieDbMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        setSupportActionBar(toolbar);
         SharedPreferences preferencias = PreferenceManager.getDefaultSharedPreferences(this);   // necesario para referenciar y leer la configuración del programa
 
         // Según como esté configurado el programa lee de las preferncias y muestra un titulo en el Toolbar u otro
@@ -29,14 +30,20 @@ public class MovieDbMain extends AppCompatActivity {
             toolbar.setTitle("MovieDB - Populares");
         }
         else if (preferencias.getString("lista_peliculas","top_rated").equals("top_rated")){
-            toolbar.setTitle("MovieDB - Top Rated");
+            toolbar.setTitle("MovieDB - Mejor Valoradas");
         }
         else{
             toolbar.setTitle("MovieDB");
         }
         setSupportActionBar(toolbar);
     }
+/*
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        Peli pelicula = (Peli) getIntent().getExtras().get("pelicula");
+        toolbar.setTitle(pelicula.getTitle() + " - (" + pelicula.getReleaseDate().substring(0, 4) + ")");
+ */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
