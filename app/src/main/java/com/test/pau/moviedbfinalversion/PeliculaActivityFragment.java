@@ -23,7 +23,7 @@ public class PeliculaActivityFragment extends Fragment {
 
     private Peli pelicula;
     //    private SimpleDateFormat data = new SimpleDateFormat("dd/MM/YY");
-    DecimalFormat formato=new DecimalFormat("#00");
+    DecimalFormat formato=new DecimalFormat("#.#");
     DecimalFormat formato2=new DecimalFormat("#0.00");
     final private String posterUrl = "http://image.tmdb.org/t/p/";
     final private String posterSize = "w185";
@@ -37,7 +37,7 @@ public class PeliculaActivityFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         Bundle bd = intent.getExtras();
 
-        if (bd != null) {   // Su hemos recibido algo lo asigna a pelocula
+        if (bd != null) {   // Si hemos recibido algo lo asigna a pelicula
             pelicula = (Peli) intent.getSerializableExtra("pelicula");
         }
 
@@ -55,7 +55,7 @@ public class PeliculaActivityFragment extends Fragment {
         fecha.setText("Estreno: "+pelicula.getReleaseDate());
         popularidad.setText("Popularidad "+formato.format(pelicula.getPopularity())+"%");
         valoracion.setText("Valoración "+formato2.format(pelicula.getVoteAverage()));
-        idioma.setText("Lengua original: "+pelicula.getOriginalLanguage());
+        idioma.setText("Lengua original: "+pelicula.getOriginalLanguage().toUpperCase());
         catalogacion.setText(getCatalogacion());
         descripcion.setText("Sinopsis\n\n"+pelicula.getOverview());
         Picasso.with(getContext()).load(posterUrl + posterSize + pelicula.getPosterPath()).into(poster);//

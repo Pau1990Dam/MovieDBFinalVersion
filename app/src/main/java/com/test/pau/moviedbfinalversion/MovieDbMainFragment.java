@@ -69,16 +69,6 @@ public class MovieDbMainFragment extends Fragment {
             }
 
         });
-        /*
-                listaPeliculas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Result selectedFilm = (Result) parent.getItemAtPosition(position);
-                Intent detallesPeliculas = new Intent(getContext(), MovieDetailsActivity.class);
-                detallesPeliculas.putExtra("pelicula", selectedFilm);
-                startActivity(detallesPeliculas);
-            }
-        });
-         */
 
         return rootView;
     }

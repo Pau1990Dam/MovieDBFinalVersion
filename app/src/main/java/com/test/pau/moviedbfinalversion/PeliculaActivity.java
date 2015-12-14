@@ -18,16 +18,7 @@ public class PeliculaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pelicula_detalls);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         Peli pelicula = (Peli) getIntent().getExtras().get("pelicula");
         toolbar.setTitle(pelicula.getTitle() + " - (" + pelicula.getReleaseDate().substring(0, 4) + ")");
-
     }
 }
-
-/*
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
-
-        myToolbar.setTitle("Peli");
- */

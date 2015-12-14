@@ -24,8 +24,6 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> implements Serializable
     final private String posterUrl = "http://image.tmdb.org/t/p/";
     final private String posterSize = "w185";
     List<Peli>pelis;
-    DecimalFormat formato=new DecimalFormat("#0.00");
-    DecimalFormat formato2=new DecimalFormat("#00");
     public AdaptadorGraella(Context context, int resource, List<Peli> pelis) {
         super(context, resource, pelis);
         this.pelis=pelis;
@@ -41,15 +39,11 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> implements Serializable
 
         ImageView poster=(ImageView)convertView.findViewById(R.id.peliPoster);
         TextView titol=(TextView)convertView.findViewById(R.id.Titol);
-      //  TextView popularitat=(TextView)item.findViewById(R.id.Popularitat);
-       // TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);
 
-       // poster.setImageResource(R.drawable.sample_6);//Provisional
         Picasso.with(getContext()).load(posterUrl + posterSize + pelis.get(position).
                 getPosterPath()).fit().into(poster);//
         titol.setText(pelis.get(position).getTitle());
-        //popularitat.setText("Popularidad "+formato2.format(pelis.get(position).getPopularity())+"%");
-        //valoracio.setText("Valoración " + formato.format(pelis.get(position).getVoteAverage()));
+
         return (convertView);
     }
 }
