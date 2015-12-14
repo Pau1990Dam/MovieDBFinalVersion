@@ -32,20 +32,24 @@ public class AdaptadorGraella extends ArrayAdapter<Peli> implements Serializable
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
-        LayoutInflater inflater=LayoutInflater.from(getContext());
-        View item =inflater.inflate(R.layout.fila_graella, null);
 
-        ImageView poster=(ImageView)item.findViewById(R.id.peliPoster);
-        TextView titol=(TextView)item.findViewById(R.id.Titol);
+        Peli pelicula=getItem(position);
+        if(convertView==null){
+            LayoutInflater inflater=LayoutInflater.from(getContext());
+            convertView =inflater.inflate(R.layout.fila_graella, parent, false);
+        }
+
+        ImageView poster=(ImageView)convertView.findViewById(R.id.peliPoster);
+        TextView titol=(TextView)convertView.findViewById(R.id.Titol);
       //  TextView popularitat=(TextView)item.findViewById(R.id.Popularitat);
        // TextView valoracio=(TextView)item.findViewById(R.id.Valoracio);
 
        // poster.setImageResource(R.drawable.sample_6);//Provisional
         Picasso.with(getContext()).load(posterUrl + posterSize + pelis.get(position).
-                getPosterPath()).into(poster);//
+                getPosterPath()).fit().into(poster);//
         titol.setText(pelis.get(position).getTitle());
         //popularitat.setText("Popularidad "+formato2.format(pelis.get(position).getPopularity())+"%");
         //valoracio.setText("Valoración " + formato.format(pelis.get(position).getVoteAverage()));
-        return (item);
+        return (convertView);
     }
 }

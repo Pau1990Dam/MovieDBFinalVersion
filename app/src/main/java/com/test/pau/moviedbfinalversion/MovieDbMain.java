@@ -19,17 +19,16 @@ public class MovieDbMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         SharedPreferences preferencias = PreferenceManager.getDefaultSharedPreferences(this);   // necesario para referenciar y leer la configuración del programa
 
-        // Según como esté configurado el programa lee de las preferncias y muestra un titulo en el Toolbar u otro
-        /* IMPORTANTE: SOLO funcionará mientras la gestión de categorías pase por las preferencias.*/
 
         if(preferencias.getString("lista_peliculas","populars").equals("populars")){
             toolbar.setTitle("MovieDB - Populares");
         }
         else if (preferencias.getString("lista_peliculas","top_rated").equals("top_rated")){
-            toolbar.setTitle("MovieDB - Top Rated");
+            toolbar.setTitle("MovieDB - Mejor Valoradas");
         }
         else{
             toolbar.setTitle("MovieDB");
