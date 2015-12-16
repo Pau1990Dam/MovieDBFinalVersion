@@ -34,6 +34,11 @@
             android:label="@string/title_activity_pelicula_detalls"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <provider
+            android:name="com.test.pau.moviedbfinalversion.provider.PeliProvider"
+            android:authorities="com.test.pau.moviedbfinalversion.provider"
+            android:exported="false" />
+
     </application>
 
 </manifest>

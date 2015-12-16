@@ -1,0 +1,14 @@
+{
+    "syntaxVersion": 3,
+    "projectPackageId": "com.test.moviedbfinalversion",
+    "authority": "com.test.pau.moviedbfinalversion.provider",
+    "providerJavaPackage": "com.test.pau.moviedbfinalversion.provider",
+    "providerClassName": "PeliProvider",
+    "sqliteOpenHelperClassName": "PeliSQLiteOpenHelper",
+    "sqliteOpenHelperCallbacksClassName": "PeliSQLiteOpenHelperCallbacks",
+    "databaseFileName": "pelis.db",
+    "databaseVersion": 1,
+    "enableForeignKeys": true,
+    "useAnnotations": true
+}
+

@@ -1,0 +1,29 @@
+{
+    "documentation": "Una pelicula cuya información hay que almacenar",
+    "fields": [
+        {
+            "name": "titulo",
+            "type": "String"
+        },
+        {
+            "name": "popularidad",
+            "type": "String"
+        },
+        {
+            "name": "valoracion",
+            "type": "String"
+        },
+        {
+            "name": "lengua_org",
+            "type": "String"
+        },
+        {
+            "name": "sinopsis",
+            "type": "String"
+        },
+        {
+            "name": "posterpath",
+            "type": "String"
+        }
+    ]
+}
